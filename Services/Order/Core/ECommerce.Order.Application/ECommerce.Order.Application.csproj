@@ -10,4 +10,9 @@
     <ProjectReference Include="..\ECommerce.Order.Domain\ECommerce.Order.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="MediatR" Version="14.1.0" />
+  </ItemGroup>
+
 </Project>
