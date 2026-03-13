@@ -13,7 +13,8 @@ namespace ECommerce.IdentityServer
         {
             new ApiResource("CatalogResource"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
             new ApiResource("OrderResource"){Scopes={"OrderFullPermission"}},
-            new ApiResource("BasketResource"){Scopes={"BasketFullPermission"}}
+            new ApiResource("BasketResource"){Scopes={"BasketFullPermission"}},
+            new ApiResource("DiscountResource"){Scopes={"DiscountFullPermission"}},
         };
         public static IEnumerable<IdentityResource> IdentityResources =>
                    new IdentityResource[]
@@ -30,6 +31,7 @@ namespace ECommerce.IdentityServer
                 new ApiScope("CatalogReadPermission","Read Authorization for catalog operations"),
                 new ApiScope("OrderFullPermission","Full Authorization for order operations"),
                 new ApiScope("BasketFullPermission","Full Authorization for basket operations"),
+                new ApiScope("DiscountFullPermission","Full Authorization for Discount operations"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -65,6 +67,7 @@ namespace ECommerce.IdentityServer
                         "CatalogFullPermission",
                         "OrderFullPermission",
                         "BasketFullPermission",
+                        "DiscountFullPermission",
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.Profile,
