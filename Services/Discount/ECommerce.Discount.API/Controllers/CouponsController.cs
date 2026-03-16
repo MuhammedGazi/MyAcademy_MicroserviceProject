@@ -7,7 +7,7 @@ namespace ECommerce.Discount.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [AllowAnonymous]
     public class CouponsController(ICouponService _service) : ControllerBase
     {
         [HttpGet]
