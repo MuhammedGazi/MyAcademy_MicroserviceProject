@@ -1,9 +1,26 @@
 using ECommerce.WebUI.Extensions;
+using ECommerce.WebUI.Services.IdentityServices;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<IIdentityService, IdentityService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
+//builder.Services.AddAccessTokenManagement();
 builder.Services.AddHttpClientServicesExtensions(builder.Configuration);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+{
+    options.LoginPath = "/Auth/Login";
+    options.LogoutPath = "/Auth/Logout";
+    options.Cookie.SameSite = SameSiteMode.Strict;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    options.Cookie.Name = "ECommerceCookie";
+});
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -20,7 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

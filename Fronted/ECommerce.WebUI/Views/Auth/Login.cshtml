@@ -1,0 +1,43 @@
+﻿@using ECommerce.WebUI.DTOs.IdentityServer
+@model LoginDto
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-header bg-dark text-white text-center py-3">
+                    <h3 class="mb-0">Yönetim Paneli</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Index" asp-controller="Login" method="post">
+
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label">Kullanıcı Adı</label>
+                            <input asp-for="Username" class="form-control form-control-lg" placeholder="Kullanıcı adınızı girin" />
+                            <span asp-validation-for="Username" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Şifre</label>
+                            <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Şifrenizi girin" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Giriş Yap</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3 bg-light">
+                    <small class="text-muted">E-Commerce Identity Server</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
